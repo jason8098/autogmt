@@ -4,7 +4,9 @@
 #  if not. you have to manually do it
 #3.in case of LOL you should press pgdn key when the ACTUAL game is running
 #4.do not clsoe the game while this code is running. if you did, u shuld run this code again.
-#5.
+#5.python 3.7 or latest version should be installed on your computer.
+#6.this code can ONLY run in 64-bit operating system. Otherwise it might cause error.
+
 
 from pynput.keyboard import Key, Controller
 import time
