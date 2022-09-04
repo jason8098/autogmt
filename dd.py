@@ -1,13 +1,13 @@
 #Impotant things before run this code!
 #1.google meet window should be independent (no tabs in the google meet window)
 #2.chat in google meet has to be activated and textbox should be always focused.
-#  if not. you have to manually do it
+#  if not, you have to manually do it
 #3.in case of LOL you should press pgdn key when the ACTUAL game is running
 #4.do not clsoe the game while this code is running. if you did, u shuld run this code again.
 #5.python 3.7 or latest version should be installed on your computer.
-#6.this code can ONLY run in 64-bit operating system. Otherwise it might cause error.
-
-
+#6.this code can ONLY run in 64-bit operating system. Otherwise it might cause some error.
+#7.follwing libraries MUST be installed on venv or default
+# pynput, time, pygetwindow, os
 from pynput.keyboard import Key, Controller
 import time
 from pynput import keyboard
@@ -18,7 +18,7 @@ enb=False
 Game=""
 a=0
 c=0
-
+message = "네" # 메세지 지정
 def alt_tab():
     keyboard = Controller()
     keyboard.press(Key.alt_l)
@@ -29,7 +29,7 @@ def alt_tab():
 #문자 입력 function
 def yee(): 
     keyboard = Controller()
-    keyboard.type("네") #다른거 건들지말고 여기 글자만 바꾸삼. 따옴표 지우지마삼.
+    keyboard.type(message) 
     keyboard.press(Key.enter)
     keyboard.release(Key.enter)
 
@@ -55,8 +55,8 @@ while enb == False:
         print("지금 하고있는 게임 :",GameTitle)
         Game.minimize()
 
-        #PyGetWindow 라이브러리 특성상 .activate() function으로 활성 윈도우를 수동으로 포커스를 해제 후 다시 activate 시키면 exception 에러가 뜸. 
-        #그러므로 except: 에서 아무것도 실행 안하게 함.
+        # PyGetWindow 라이브러리 특성상 .activate() 로 이미 활성화된 윈도우를 수동으로 포커스를 해제(다른 윈도우로 이동) 후 다시 .activate() 시키면 exception 에러가 뜸. 
+        # 에러가 나도 작동엔 지장 없기에 except 에서 아무것도 안함.
         try:
         
             MeetingWindow.activate()
@@ -90,7 +90,7 @@ while enb == True:
                 print("")
                 
             a=a+1
-            print('마법의 게이',a,"!")
+            print('앙',a,"기모찌!")
             
         if c==2:
             Game.restore()
@@ -109,10 +109,9 @@ while enb == True:
             except:
                 print("")
             a=a+1
-            print('중성 게이',a,"!")
+            print('시',a,"발!")
             
         if c==2:
             Game.restore()
             Game.activate()
             c=-1
-
